@@ -10,9 +10,15 @@ import com.example.myapplication.room.RespositoryMyList;
 import com.example.myapplication.room.local.DatabaseTask;
 import com.example.myapplication.room.local.LocalDataSourceMyList;
 import com.example.myapplication.room.model.MyList;
+import com.example.myapplication.roomdagger.AppModule;
+import com.example.myapplication.roomdagger.DaggerRoomComponent;
+import com.example.myapplication.roomdagger.RoomComponent;
+import com.example.myapplication.roomdagger.RoomModule;
 
 import java.util.List;
 import java.util.Random;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -28,6 +34,8 @@ import io.reactivex.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity {
 
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    @Inject
     RespositoryMyList respositoryMyList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +44,16 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
     private void init(){
-        DatabaseTask databaseTask = DatabaseTask.getInstance(this);
+//        DatabaseTask databaseTask = DatabaseTask.getInstance(this);
+//
+//        respositoryMyList = RespositoryMyList.getInstance(
+//                LocalDataSourceMyList.getInstance(databaseTask.daoMyList()));
 
-        respositoryMyList = RespositoryMyList.getInstance(
-                LocalDataSourceMyList.getInstance(databaseTask.daoMyList()));
 
+        RoomComponent roomComponent = DaggerRoomComponent.builder()
+                .appModule(new AppModule(getApplication()))
+                .build();
+        roomComponent.inject(this);
 
         //insertList();
         getAllMyList();

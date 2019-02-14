@@ -21,7 +21,7 @@ public class RespositoryMyList implements DataSourceMyList{
 
     DataSourceMyList dataSourceMyList;
 
-    private RespositoryMyList(DataSourceMyList dataSourceMyList){
+    public RespositoryMyList(DataSourceMyList dataSourceMyList){
         this.dataSourceMyList = dataSourceMyList;
     }
 

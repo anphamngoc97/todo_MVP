@@ -6,6 +6,8 @@ import com.example.myapplication.room.model.Task;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Flowable;
 
 public class LocalDataSourceMyList implements DataSourceMyList {
@@ -20,6 +22,7 @@ public class LocalDataSourceMyList implements DataSourceMyList {
 
     private DaoMyList daoMyList;
 
+    @Inject
     public LocalDataSourceMyList(DaoMyList daoMyList) {
         this.daoMyList = daoMyList;
     }
