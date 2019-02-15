@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
 import android.arch.persistence.room.Database;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.myapplication.mainnote.MainNoteActivity;
 import com.example.myapplication.room.DataSourceMyList;
 import com.example.myapplication.room.RespositoryMyList;
 import com.example.myapplication.room.local.DatabaseTask;
@@ -37,11 +39,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     RespositoryMyList respositoryMyList;
+
+    @Inject
+    LocalDataSourceMyList localDataSourceMyList;
+
+    LocalDataSourceMyList localDataSourceMyList1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        startActivity(new Intent(this, MainNoteActivity.class));
     }
     private void init(){
 //        DatabaseTask databaseTask = DatabaseTask.getInstance(this);
@@ -54,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 .appModule(new AppModule(getApplication()))
                 .build();
         roomComponent.inject(this);
+
+        Log.d("AAA",""+localDataSourceMyList+"_"+localDataSourceMyList1);
 
         //insertList();
         getAllMyList();
