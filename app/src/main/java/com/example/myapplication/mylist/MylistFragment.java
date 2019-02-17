@@ -74,4 +74,5 @@ public class MylistFragment extends Fragment implements MylistContract.View {
     }
 
 
+
 }

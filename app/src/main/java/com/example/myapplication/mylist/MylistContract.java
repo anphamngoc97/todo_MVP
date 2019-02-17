@@ -13,6 +13,7 @@ public interface MylistContract {
     }
     interface Presenter extends BasePresenter<View>{
         void getData();
+        void addMyList(String name);
     }
     interface Iterator extends BaseIterator{
 

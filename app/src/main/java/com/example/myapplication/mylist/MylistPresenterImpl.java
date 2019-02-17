@@ -38,4 +38,9 @@ public class MylistPresenterImpl implements MylistContract.Presenter,
     public void getData() {
         iterator.getData(this);
     }
+
+    @Override
+    public void addMyList(String name) {
+
+    }
 }
