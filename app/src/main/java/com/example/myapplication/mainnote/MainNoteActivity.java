@@ -1,27 +1,33 @@
 package com.example.myapplication.mainnote;
 
+import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.ViewPagerMainNoteAdapter;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import hkm.ui.materialtabs.MaterialTab;
-import hkm.ui.materialtabs.MaterialTabHost;
-import hkm.ui.materialtabs.MaterialTabListener;
+import devlight.io.library.ntb.NavigationTabBar;
 
-public class MainNoteActivity extends AppCompatActivity implements MainNoteContract.View, MaterialTabListener {
+
+public class MainNoteActivity extends AppCompatActivity {
 
     @BindView(R.id.tabHost)
-    MaterialTabHost tabHost;
+    NavigationTabBar tabHost;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
 
     ViewPagerMainNoteAdapter mainNoteAdapter;
+
+    final ArrayList<NavigationTabBar.Model> tabModel = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,52 +38,32 @@ public class MainNoteActivity extends AppCompatActivity implements MainNoteContr
 
         init();
     }
-    private void init(){
+
+    private void init() {
         setUpViewPager();
     }
-    private void setUpViewPager(){
+
+    private void setUpViewPager() {
         mainNoteAdapter = new ViewPagerMainNoteAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mainNoteAdapter);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onPageScrolled(int i, float v, int i1) {
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                tabHost.setSelectedNavigationItem(i);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
             }
         });
 
-        for(int i=0;i<mainNoteAdapter.getCount();i++){
-            tabHost.addTab(tabHost.newTab().setText(mainNoteAdapter.getPageTitle(i))
-            .setTabListener(this));
+        for (int i = 0; i < mainNoteAdapter.getCount(); i++) {
+            //tabHost.addTab(tabHost.newTab().setText(mainNoteAdapter.getPageTitle(i))
+            //.setTabListener(this));
+            tabModel.add(new NavigationTabBar.Model.Builder(null,Color.BLUE)
+                    .title("title")
+                    .badgeTitle("badge")
+                    .build()
+            );
         }
-    }
-
-    @Override
-    public void changeTab(int position) {
-
-    }
-
-    @Override
-    public void onTabSelected(MaterialTab materialTab) {
-        Log.d("AAA","tab select");
-        viewPager.setCurrentItem(materialTab.getPosition(),true);
-    }
-
-    @Override
-    public void onTabReselected(MaterialTab materialTab) {
-
-    }
-
-    @Override
-    public void onTabUnselected(MaterialTab materialTab) {
-
+        tabHost.setModels(tabModel);
+        tabHost.setViewPager(viewPager);
+        tabHost.setTitleMode(NavigationTabBar.TitleMode.ALL);
     }
 }

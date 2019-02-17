@@ -46,5 +46,9 @@ dependencies {
 
     //tab
     implementation 'com.github.jjhesk:MaterialTabsAdavanced:v0.17' //https://github.com/jjhesk/MaterialTabsAdavanced
+    implementation 'devlight.io:navigationtabbar:1.2.5' //https://github.com/Devlight/NavigationTabBar
 
+
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }

@@ -7,7 +7,7 @@
     tools:context=".mainnote.MainNoteActivity"
     app:layout_constraintVertical_chainStyle="packed">
 
-    <hkm.ui.materialtabs.MaterialTabHost
+    <devlight.io.library.ntb.NavigationTabBar
         android:id="@+id/tabHost"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -1,21 +1,16 @@
 package com.example.myapplication;
 
-import android.arch.persistence.room.Database;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.myapplication.mainnote.MainNoteActivity;
-import com.example.myapplication.room.DataSourceMyList;
 import com.example.myapplication.room.RespositoryMyList;
-import com.example.myapplication.room.local.DatabaseTask;
-import com.example.myapplication.room.local.LocalDataSourceMyList;
 import com.example.myapplication.room.model.MyList;
 import com.example.myapplication.roomdagger.AppModule;
 import com.example.myapplication.roomdagger.DaggerRoomComponent;
 import com.example.myapplication.roomdagger.RoomComponent;
-import com.example.myapplication.roomdagger.RoomModule;
 
 import java.util.List;
 import java.util.Random;
@@ -25,7 +20,6 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -40,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     RespositoryMyList respositoryMyList;
 
-    @Inject
-    LocalDataSourceMyList localDataSourceMyList;
-
-    LocalDataSourceMyList localDataSourceMyList1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         roomComponent.inject(this);
 
-        Log.d("AAA",""+localDataSourceMyList+"_"+localDataSourceMyList1);
 
         //insertList();
         getAllMyList();
