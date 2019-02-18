@@ -43,4 +43,9 @@ public class MylistPresenterImpl implements MylistContract.Presenter,
     public void addMyList(String name) {
 
     }
+
+    @Override
+    public void moveToDetail(int position) {
+        view.startDetailActivity(position);
+    }
 }

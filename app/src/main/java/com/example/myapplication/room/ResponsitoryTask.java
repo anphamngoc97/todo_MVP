@@ -1,6 +1,5 @@
 package com.example.myapplication.room;
 
-import com.example.myapplication.room.model.MyList;
 import com.example.myapplication.room.model.Task;
 
 import java.util.List;
@@ -26,8 +25,8 @@ public class ResponsitoryTask implements DataSourceTask {
 
 
     @Override
-    public Flowable<List<Task>> getTaskByNameList(String nameList) {
-        return null;
+    public Flowable<List<Task>> getTaskByIdList(int id) {
+        return dataSourceTask.getTaskByIdList(id);
     }
 
     @Override

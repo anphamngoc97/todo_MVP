@@ -73,6 +73,10 @@ public class MylistFragment extends Fragment implements MylistContract.View {
         Log.d("AAA","size refresh: " + myList.size());
     }
 
+    @Override
+    public void startDetailActivity(int position) {
+
+    }
 
 
 }

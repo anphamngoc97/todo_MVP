@@ -1,8 +1,5 @@
 package com.example.myapplication.room;
 
-import android.arch.persistence.room.Query;
-
-import com.example.myapplication.room.model.MyList;
 import com.example.myapplication.room.model.Task;
 
 import java.util.List;
@@ -11,7 +8,7 @@ import io.reactivex.Flowable;
 
 public interface DataSourceTask {
 
-    Flowable<List<Task>> getTaskByNameList(String nameList);
+    Flowable<List<Task>> getTaskByIdList(int id);
 
     void insertTask(Task... task);
 

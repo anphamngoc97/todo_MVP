@@ -1,7 +1,6 @@
 package com.example.myapplication.roomdagger;
 
 import android.app.Application;
-import android.util.Log;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,7 +15,6 @@ public class AppModule {
 
     @Provides
     public Application getApplication(){
-        Log.d("AAA","provide appl");
         return this.application;
     }
 }

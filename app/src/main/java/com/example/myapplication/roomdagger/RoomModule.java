@@ -2,7 +2,6 @@ package com.example.myapplication.roomdagger;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
 
 import com.example.myapplication.room.ResponsitoryTask;
 import com.example.myapplication.room.RespositoryMyList;
@@ -71,15 +70,16 @@ public class RoomModule {
     public DaoTask provideDaoTask(DatabaseTask databaseTask){
         return databaseTask.daoTask();
     }
-//    @Provides
-//    @Singleton
-//    public LocalDataSourceTask provideLocalDataSourceTask(DaoTask daoTask){
-//        return new LocalDataSourceTask(daoTask);
-//    }
-//    @Provides
-//    @Singleton
-//    ResponsitoryTask provideResponsitoryTask(LocalDataSourceTask localDataSourceTask){
-//        return new ResponsitoryTask(localDataSourceTask);
-//    }
+
+    @Provides
+    @Singleton
+    public LocalDataSourceTask provideLocalDataSourceTask(DaoTask daoTask){
+        return new LocalDataSourceTask(daoTask);
+    }
+    @Provides
+    @Singleton
+    ResponsitoryTask provideResponsitoryTask(LocalDataSourceTask localDataSourceTask){
+        return new ResponsitoryTask(localDataSourceTask);
+    }
 
 }

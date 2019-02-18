@@ -5,10 +5,8 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
-import com.example.myapplication.room.model.MyList;
 import com.example.myapplication.room.model.Task;
 
-import java.sql.Date;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -20,8 +18,8 @@ public interface DaoTask {
     @Query("SELECT * FROM Task")
     Flowable<List<Task>> getAllTask();
 
-    @Query("SELECT * FROM Task WHERE typeList=:nameList")
-    Flowable<List<Task>> getTaskByNameList(String nameList);
+    @Query("SELECT * FROM Task WHERE idList=:idList")
+    Flowable<List<Task>> getTaskByIdList(int idList);
 
     @Insert
     void insertTask(Task... task);

@@ -1,7 +1,6 @@
 package com.example.myapplication.room.local;
 
 import com.example.myapplication.room.DataSourceTask;
-import com.example.myapplication.room.model.MyList;
 import com.example.myapplication.room.model.Task;
 
 import java.util.List;
@@ -28,8 +27,8 @@ public class LocalDataSourceTask implements DataSourceTask {
     }
 
     @Override
-    public Flowable<List<Task>> getTaskByNameList(String nameList) {
-        return daoTask.getTaskByNameList(nameList);
+    public Flowable<List<Task>> getTaskByIdList(int id) {
+        return daoTask.getTaskByIdList(id);
     }
 
     @Override
