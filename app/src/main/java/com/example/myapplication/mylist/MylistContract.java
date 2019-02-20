@@ -10,14 +10,19 @@ import java.util.ArrayList;
 public interface MylistContract {
     interface View extends BaseView{
         void refreshList(ArrayList<MyList> myList);
+        void refreshInsert(MyList myList);
+        void refreshRemove(int sposition);
         void startDetailActivity(int position);
     }
     interface Presenter extends BasePresenter<View>{
         void getData();
-        void addMyList(String name);
-        void moveToDetail(int position);
+        void insertMyList(String name);
+        void removeDetail(int position);
+        void onClickListItem(int position);
     }
     interface Iterator extends BaseIterator{
-
+        void insertData(MyList myList,OnFinishListener onFinishListener);
+        void updateData(MyList myList,OnFinishListener onFinishListener);
+        void deleteData(MyList myList,OnFinishListener onFinishListener);
     }
 }

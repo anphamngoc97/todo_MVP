@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.myapplication.RootFragment;
 import com.example.myapplication.calender.CalendarFragment;
 import com.example.myapplication.task.TaskFragment;
 
@@ -13,6 +14,7 @@ public class ViewPagerMainNoteAdapter extends FragmentStatePagerAdapter {
 
     CalendarFragment calendarFragment;
     TaskFragment taskFragment;
+    RootFragment rootFragment;
 
     public ViewPagerMainNoteAdapter(FragmentManager fm) {
         super(fm);
@@ -22,8 +24,8 @@ public class ViewPagerMainNoteAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int i) {
         switch (i){
             case 0:{
-                taskFragment = new TaskFragment();
-                return taskFragment;
+                rootFragment = new RootFragment();
+                return rootFragment;
             }
             case 1:{
                 calendarFragment = new CalendarFragment();

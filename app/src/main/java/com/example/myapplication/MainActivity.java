@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.myapplication.mainnote.MainNoteActivity;
 import com.example.myapplication.room.ResponsitoryTask;
 import com.example.myapplication.room.RespositoryMyList;
 import com.example.myapplication.room.model.MyList;
@@ -44,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        //startActivity(new Intent(this, MainNoteActivity.class));
+
+        Intent intent = new Intent(this, MainNoteActivity.class);
+        startActivity(intent);
     }
     private void init(){
 //        DatabaseTask databaseTask = DatabaseTask.getInstance(this);
@@ -60,15 +64,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //insertList();
-        insertTask(1);
+        //insertTask(1);
         getTask();
         getAllMyList();
     }
     private void insertList(){
-        Random random = new Random(1000);
-        final MyList myList = new MyList();
-        myList.cntItem=random.nextInt()%10;
-        myList.name="mylist"+myList.cntItem;
+        final MyList myList = new MyList("mylist");
 
         Log.d("AAA","outside obse insert");
         Disposable disposable = Observable.create(new ObservableOnSubscribe<Object>() {
